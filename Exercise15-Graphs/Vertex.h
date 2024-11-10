@@ -2,7 +2,6 @@
 using namespace std;
 #include<list>
 
-
 template<class T>
 class Vertex
 {
