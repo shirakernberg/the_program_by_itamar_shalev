@@ -1,7 +1,9 @@
+import pytest
+
 from Exercise31.Heap import Heap
 
-
-def test_min_heap():
+@pytest.fixture()
+def heap_for_testing():
     heap = Heap()
     heap.push(3)
     heap.push(1)
@@ -9,6 +11,10 @@ def test_min_heap():
     heap.push(0)
     heap.push(2)
     heap.push(4)
+    return heap
+
+def test_min_heap(heap_for_testing):
+    heap = heap_for_testing
 
     assert heap.pop() == 0
     assert heap.pop() == 1
@@ -35,14 +41,8 @@ def test_max_heap():
     assert heap.pop() == 0
 
 
-def test_peek():
-    heap = Heap()
-    heap.push(3)
-    heap.push(1)
-    heap.push(5)
-    heap.push(0)
-    heap.push(2)
-    heap.push(4)
+def test_peek(heap_for_testing):
+    heap = heap_for_testing
 
     assert heap.peek() == 0
     heap.pop()
